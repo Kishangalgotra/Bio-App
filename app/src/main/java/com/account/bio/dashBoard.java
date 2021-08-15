@@ -9,13 +9,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 public class dashBoard extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+
         getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_bar_dashboard);
         bottomNavigationView.setSelectedItemId(R.id.Home);
