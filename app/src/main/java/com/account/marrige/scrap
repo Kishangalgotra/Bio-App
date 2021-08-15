@@ -1,0 +1,57 @@
+doc.add(new Paragraph("CANDIDATE DETAILS\n"+entereddata.get(0)));
+        doc.add(new Paragraph(entereddata.get(1)));
+        doc.add(new Paragraph(entereddata.get(2)));
+        doc.add(new Paragraph(entereddata.get(3)));
+        doc.add(new Paragraph("USER ADDRESS:\n"+entereddata.get(4)));
+        doc.add(new Paragraph("\n"));
+        doc.add(new Paragraph("WORK EXPERIENCE\n"+entereddata.get(5)));
+        doc.add(new Paragraph("\n"));
+        doc.add(new Paragraph("TECHNICAL SKILLS:\n"+"advanced technology:"+entereddata.get(0)));
+        doc.add(new Paragraph("language known:"  +entereddata.get(0)));
+        doc.add(new Paragraph("operating system:"+entereddata.get(0)));
+        doc.add(new Paragraph("embeded cores:"   +entereddata.get(0)));
+
+ ArrayList<String> array = new ArrayList<>();
+        try {
+            array = (ArrayList<String>) ObjectSerializer.deserialize(sharedPreferences.getString(id,ObjectSerializer.serialize(new ArrayList<String>())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert array != null;
+        Log.i("New Friends : ",array.toString()) ;
+
+progressBar_id
+private void createPdf() throws FileNotFoundException, DocumentException {
+
+        File pdfFolder = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS), "pdfdemo");
+        if (!pdfFolder.exists()) {
+            pdfFolder.mkdir();
+            Log.i("LOG_TAG", "Pdf Directory created");
+        }
+
+        //Create time stamp
+        Date date = new Date() ;
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(date);
+
+        File myFile = new File(pdfFolder + timeStamp + ".pdf");
+
+        OutputStream output = new FileOutputStream(myFile);
+
+        //Step 1
+        Document document = new Document();
+
+        //Step 2
+        PdfWriter.getInstance(document, output);
+
+        //Step 3
+        document.open();
+
+        //Step 4 Add content
+        document.add(new Paragraph("vsafsfdsfa"));
+        document.add(new Paragraph("sdfafsfefsdfad"));
+
+        //Step 5: Close the document
+        document.close();
+
+    }

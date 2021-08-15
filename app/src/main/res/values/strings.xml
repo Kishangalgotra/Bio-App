@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Marrige</string>
+    <string name="home">Home</string>
+    <string name="setting">Setting</string>
+    <string name="view_biodata">View BioData</string>
+
+    <string name="add">ADD</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="education">Education</string>
+    <string name="mother_name">Mother Name</string>
+    <string name="number_of_sister">Number of Sister</string>
+    <string name="full_address">Full Address</string>
+    <string name="next">NEXT</string>
+    <string name="contact_no">Contact No</string>
+    <string name="father_name">Father Name</string>
+    <string name="father_occupation">Father Occupation</string>
+    <string name="family_background"> Family Background</string>
+    <string name="occupation">Occupation</string>
+    <string name="full_name">Full Name</string>
+
+    <string name="religion">Religion</string>
+    <string name="language">Language</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="bio_data">BIO DATA</string>
+    <string name="personal_data">Personal Data</string>
+    <string name="others">others</string>
+    <string name="height">Height</string>
+    <string name="birthplace">BirthPlace</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="todo">TODO</string>
+
+    <!-- TODO: for template view -->
+    <string name="education_">Education  :-</string>
+    <string name="mother_name_">Mother Name</string>
+    <string name="number_of_sister_">Number of Sister</string>
+    <string name="full_address_">Full Address</string>
+    <string name="next_">NEXT</string>
+    <string name="contact_no_">Contact No</string>
+    <string name="father_name_">Father Name</string>
+    <string name="father_occupation_">Father Occupation</string>
+    <string name="family_background_"> Family Background</string>
+    <string name="occupation_">Occupation</string>
+    <string name="full_name_">Full Name</string>
+
+    <string name="religion_">Religion   :-</string>
+    <string name="language_">Language</string>
+    <string name="name_">Name</string>
+    <string name="bio_data_">BIO DATA</string>
+    <string name="personal_data_">Personal Data</string>
+    <string name="others_">others</string>
+    <string name="height_">Height</string>
+    <string name="birthplace_">BirthPlace</string>
+
+</resources>

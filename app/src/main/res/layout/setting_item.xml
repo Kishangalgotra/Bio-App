@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:thumbTint="#FF3D3D"
+        app:trackTint="@drawable/switch_custom"
+        android:fontFamily="@font/nunito_sans_light"
+        android:gravity="start"
+        android:padding="8dp"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat.Small"
+        android:text="Switch"
+        android:textColor="#FF3D3D"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:theme="@style/SwitchCompatTheme"/>
+
+</LinearLayout>
+
