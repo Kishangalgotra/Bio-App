@@ -1,4 +1,4 @@
-package com.account.marrige;
+package com.account.bio;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

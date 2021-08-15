@@ -1,4 +1,4 @@
-package com.account.marrige;
+package com.account.bio;
 
 import org.junit.Test;
 

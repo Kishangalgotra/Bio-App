@@ -1,7 +1,5 @@
-package com.account.marrige;
+package com.account.bio;
 
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -17,18 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.gson.Gson;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Objects;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;

@@ -1,4 +1,4 @@
-package com.account.marrige;
+package com.account.bio;
 
 import android.content.Intent;
 import android.os.Bundle;
