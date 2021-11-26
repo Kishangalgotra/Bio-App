@@ -1,4 +1,4 @@
-package com.account.bio;
+package DashBoard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +8,19 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.account.bio.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import DashBoard.HomeFragment;
+import DashBoard.settingFragment;
+import DashBoard.view_biodata_Fragment;
+
 public class dashBoard extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).commit();

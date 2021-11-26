@@ -1,4 +1,4 @@
-package com.account.bio;
+package DashBoard;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.account.bio.R;
 
 public class settingFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";

@@ -1,4 +1,4 @@
-package com.account.bio;
+package DashBoard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+
+import com.account.bio.R;
+import com.account.bio.Fillbiodata;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     static int after_adding =0;
@@ -61,7 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.home_add :
                 final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim);
                 add.startAnimation(myAnim);
-                Intent intent = new Intent(getContext(), filling_data_file.class);
+                Intent intent = new Intent(getContext(), Fillbiodata.class);
                 startActivity(intent);
                 if(after_adding==1){
                     after_adding =0;

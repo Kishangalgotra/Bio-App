@@ -10,6 +10,8 @@ import android.widget.ProgressBar;
 
 import java.util.Objects;
 
+import DashBoard.dashBoard;
+
 public class MainActivity extends AppCompatActivity {
     ProgressBar progressbar;
     ImageView imageview;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                startActivity(new Intent(getApplicationContext(),dashBoard.class));
+                startActivity(new Intent(getApplicationContext(), dashBoard.class));
                 finish();
             }
         };

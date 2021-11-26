@@ -30,7 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class added_data_template extends Fragment {
+import CommonFiles.Common;
+
+public class Adddatatotemplate extends Fragment {
     ImageView   imageView;
     TextView    BIO,name_,religion_,language_,birthdate_,birthplace_,height_,occupation_,education_,father_name_,father_occupation_,
                  contact_no_,mother_name_,number_of_sister_,full_adderss_ ;
@@ -45,13 +47,13 @@ public class added_data_template extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public added_data_template() {
+    public Adddatatotemplate() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static added_data_template newInstance(String param1, String param2) {
-        added_data_template fragment = new added_data_template();
+    public static Adddatatotemplate newInstance(String param1, String param2) {
+        Adddatatotemplate fragment = new Adddatatotemplate();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -91,7 +93,7 @@ public class added_data_template extends Fragment {
              Bundle bundle = new Bundle();
              bundle.putString("UserData",str);
 
-             pdf_template temp = new pdf_template();
+             Pdftemplate temp = new Pdftemplate();
              temp.setArguments(bundle);
 
              FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

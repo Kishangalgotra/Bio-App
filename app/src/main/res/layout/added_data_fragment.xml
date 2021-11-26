@@ -8,7 +8,7 @@
     android:id="@+id/added_data_fragment"
     android:layout_height="match_parent"
     android:background="@color/customwhite"
-    tools:context=".added_data_template">
+    tools:context=".Adddatatotemplate">
         
         <LinearLayout
             android:layout_width="match_parent"

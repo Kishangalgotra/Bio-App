@@ -10,6 +10,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -34,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class filling_data_file extends AppCompatActivity  implements View.OnClickListener{
+public class Fillbiodata extends AppCompatActivity  implements View.OnClickListener{
   String id ="1";
   EditText fist_name,last_name,religion,language,birthdate,birthplace,height,occupation,education,father_name,father_occupation,
            contact_no,mother_name,number_of_sister,full_adderss ;
@@ -183,30 +184,38 @@ public class filling_data_file extends AppCompatActivity  implements View.OnClic
                     Intent intent = new Intent(getApplicationContext(),template.class);
                     startActivity(intent);
                 }*/
-                final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.anim);
-                next.startAnimation(myAnim);
-                progressbar.setVisibility(View.VISIBLE);
-                next.setEnabled(false);
-                //a = progressbar.getProgress();
-                new Thread(() -> {
-                         try {
-                              if( Add_to_Memory()){
-                                    //Fragment temp =null;
-                                added_data_template temp = new added_data_template();
-                                FragmentManager fragmentManager =getSupportFragmentManager();
-                                fragmentManager.beginTransaction().add(R.id.add_data_layout,temp).commit();
-                                progressbar.setVisibility(View.INVISIBLE);
-                              }
-                            } catch (IOException e) {
+                try {
+                    final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.anim);
+                    next.startAnimation(myAnim);
+                    progressbar.setVisibility(View.VISIBLE);
+                    next.setEnabled(false);
+                    //a = progressbar.getProgress();
+                    new Thread(() -> {
+                             try {
+                                  if( Add_to_Memory()){
+                                        //Fragment temp =null;
+                                      try {
+                                          Adddatatotemplate temp = new Adddatatotemplate();
+                                          FragmentManager fragmentManager =getSupportFragmentManager();
+                                          fragmentManager.beginTransaction().add(R.id.add_data_layout,temp).commit();
+                                          progressbar.setVisibility(View.INVISIBLE);
+                                      } catch (Exception e) {
+                                          e.printStackTrace();
+                                      }
+                                  }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            try {// Sleep for 50 ms to show progress you can change it as well.
+                                Thread.sleep(50);
+                            } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                        try {// Sleep for 50 ms to show progress you can change it as well.
-                            Thread.sleep(50);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                }).start();
-           break;
+                    }).start();
+                } catch (Resources.NotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
     // FOR Opening Image Gallery

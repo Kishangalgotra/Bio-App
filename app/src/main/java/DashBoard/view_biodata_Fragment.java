@@ -1,4 +1,4 @@
-package com.account.bio;
+package DashBoard;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.account.bio.R;
 
 public class view_biodata_Fragment extends Fragment {
 

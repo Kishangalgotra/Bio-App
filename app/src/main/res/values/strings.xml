@@ -12,7 +12,7 @@
     <string name="mother_name">Mother Name</string>
     <string name="number_of_sister">Number of Sister</string>
     <string name="full_address">Full Address</string>
-    <string name="next">NEXT</string>
+
     <string name="contact_no">Contact No</string>
     <string name="father_name">Father Name</string>
     <string name="father_occupation">Father Occupation</string>
@@ -54,5 +54,7 @@
     <string name="others_">others</string>
     <string name="height_">Height</string>
     <string name="birthplace_">BirthPlace</string>
+    <string name="next">NEXT</string>
+    <string name="download">Download</string>
 
 </resources>
