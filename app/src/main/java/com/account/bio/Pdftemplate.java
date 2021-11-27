@@ -2,6 +2,7 @@ package com.account.bio;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -49,18 +50,17 @@ public class Pdftemplate extends Fragment {
     ArrayList<String> grabbedDataArray = new ArrayList<>();
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    Button next ;
+    Button downloadPdf;
     private String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Test.pdf";
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     ImageView bird;
     Button SaveImg;
     OutputStream outputStream;
     private static int REQUEST_CODE = 100;
+    ProgressDialog progressDialog;
 
     public Pdftemplate() {
-        // Required empty public constructor
     }
 
     public static Pdftemplate newInstance(String param1, String param2) {
@@ -85,10 +85,10 @@ public class Pdftemplate extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_pdf_template, container, false);
         try {
-            Button download_pdf = v.findViewById(R.id.download_pdf);
-            next = v.findViewById(R.id.nextButton);
+            Button sharePdf = v.findViewById(R.id.sharePdf);
+            downloadPdf = v.findViewById(R.id.downloadpdf);
             Log.i("Step ::","1");
-            next.setOnClickListener(v1 -> getActivity().onBackPressed());
+            downloadPdf.setOnClickListener(v1 -> getActivity().onBackPressed());
             String grabbeddataString=getArguments().getString("UserData");
             Log.i("Step ::","2"+grabbeddataString);
             assert grabbeddataString != null;
@@ -96,25 +96,28 @@ public class Pdftemplate extends Fragment {
             grabbedDataArray = new Gson().fromJson(grabbeddataString,ArrayList.class);
             Log.i("ArrayList", grabbedDataArray.toArray().toString());
             File path = new File("");//= Common.pdfTemplate(getContext(),grabbedDataArray);
+
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setIndeterminate(true);
+            progressDialog.setCancelable(false);
+            progressDialog.setMessage("Creating Pdf...");
+
             if(ActivityCompat.checkSelfPermission(getContext()
             , Manifest.permission.WRITE_EXTERNAL_STORAGE )== PackageManager.PERMISSION_GRANTED){
+                progressDialog.show();
                 path = Common.pdfTemplate(getContext(),grabbedDataArray);
                 PDFView pdfView = v.findViewById(R.id.pdfview);
                 pdfView.fromFile(new File(path.getAbsolutePath())).load();
                 pdfView.fitToWidth();
                 pdfView.computeScroll();
                 pdfView.documentFitsView();
+                progressDialog.cancel();
             }
-
             File finalPath = path;
-            download_pdf.setOnClickListener(v12 -> {
-                String filepath ="";
-                filepath= finalPath.getAbsolutePath() ;
-                //Toast.makeText(getContext(), filepath, Toast.LENGTH_LONG).show();
+            sharePdf.setOnClickListener(v12 -> {
                 try {
                     File filepath2 = new File(finalPath.getAbsoluteFile().getPath());
                     Uri uri = Uri.fromFile(filepath2);
-                    Toast.makeText(getContext(), uri.toString(), Toast.LENGTH_LONG).show();
                     Intent intent = ShareCompat.IntentBuilder.from((Activity) getContext())
                             .setType("application/*")
                             .setStream(uri)
@@ -186,7 +189,6 @@ public class Pdftemplate extends Fragment {
     public void buttonShareFile(View view){
         File file = new File(stringFile);
         if (!file.exists()){
-           // Toast.makeText(this, "File doesn't exists", Toast.LENGTH_LONG).show();
             return;
         }
         Intent intentShare = new Intent(Intent.ACTION_SEND);

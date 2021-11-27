@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         imageview = findViewById(R.id.imageView);
         imageview.setImageResource(R.drawable.screen_saver);
-        CountDownTimer obj = new CountDownTimer(5000,3) {
+        CountDownTimer obj = new CountDownTimer(1000,3) {
             @Override
             public void onTick(long millisUntilFinished) {
 

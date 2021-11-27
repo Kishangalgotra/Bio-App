@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.account.bio.R;
 
-public class view_biodata_Fragment extends Fragment {
+public class Viewbiodatafragment extends Fragment {
 
     String [] name    = {"Kishan","Karan","Pardeep","Monga"};
     String [] phone   = {"4231324231","2342341","534234534","756432245342"};
@@ -32,12 +32,12 @@ public class view_biodata_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public view_biodata_Fragment() {
+    public Viewbiodatafragment() {
         // Required empty public constructor
     }
     // TODO: Rename and change types and number of parameters
-    public static view_biodata_Fragment newInstance(String param1, String param2) {
-        view_biodata_Fragment fragment = new view_biodata_Fragment();
+    public static Viewbiodatafragment newInstance(String param1, String param2) {
+        Viewbiodatafragment fragment = new Viewbiodatafragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

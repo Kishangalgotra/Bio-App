@@ -11,10 +11,6 @@ import android.view.MenuItem;
 import com.account.bio.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import DashBoard.HomeFragment;
-import DashBoard.settingFragment;
-import DashBoard.view_biodata_Fragment;
-
 public class dashBoard extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ public class dashBoard extends AppCompatActivity  {
                         break;
 
                     case R.id.View_BioData:
-                        temp = new view_biodata_Fragment();
+                        temp = new Viewbiodatafragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame,temp).commit();

@@ -12,7 +12,7 @@
         
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -437,7 +437,12 @@
 
                 <Button
                     android:id="@+id/template_data_show_next"
-                    android:layout_width ="match_parent"
+                    android:background="@android:color/holo_red_light"
+                    android:foregroundGravity="center"
+                    android:textColor="@color/customwhite"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Next">
                 </Button>

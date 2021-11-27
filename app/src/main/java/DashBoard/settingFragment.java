@@ -55,7 +55,7 @@ public class settingFragment extends Fragment {
 
 
     public void instantiate(View v){
-        String[] array ={"Storage and Data","Log out","Update","Help",};
+        String[] array ={"Storage and Data","Log out","Auto Update","Help",};
         setting_list_view = v.findViewById(R.id.setting_list_view);
         //ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.setting_item,array);
         Adaptor adaptor = new Adaptor(getActivity(),array);
