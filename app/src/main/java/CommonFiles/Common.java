@@ -15,7 +15,13 @@ import android.widget.Toast;
 
 import com.account.bio.MainActivity;
 import com.account.bio.ObjectSerializer;
-import com.itextpdf.text.BaseColor;
+import com.itextpdf.html2pdf.HtmlConverter;
+/*import com.itextpdf.kernel.colors.WebColors;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;*/
+/*import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -28,7 +34,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.html.WebColors;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfWriter;*/
 /*import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.events.Event;
@@ -44,6 +50,7 @@ import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;*/
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,11 +60,44 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public interface Common {
+public interface Common  {
      ArrayList<String> DataArrayLIst = new ArrayList<>();
 
+     static File htmlToPdf(Context c,ArrayList<String> grabbedDataArray){
+         ContextWrapper cw = new ContextWrapper(c);
+         File filepath = null;
+         try {
+             String k="<html><body>CodeSpeedy</body></html>";
+           //  FileOutputStream file=new FileOutputStream(new File("output1.pdf"));
+             File myDir = new File(Environment.getExternalStorageDirectory(), "BioAppFiles");
+             String out = System.currentTimeMillis() + ".pdf";
+             if (!myDir.exists()) {
+                 myDir.mkdirs();
+                 Toast.makeText(cw, "created 1", Toast.LENGTH_SHORT).show();
+             } else {
+                 Toast.makeText(cw, "1", Toast.LENGTH_SHORT).show();
+             }
+             filepath = new File(myDir, out);
+             FileOutputStream outputStream = new FileOutputStream(filepath);
+             HtmlConverter.convertToPdf(k, outputStream);
+             /*Document document=new Document();
+             PdfWriter writer=PdfWriter.getInstance(document, file);
+             document.open();
+             ByteArrayInputStream is=new ByteArrayInputStream(k.getBytes());
+             //XMLWorkerHelper obj =
+            // XMLWorkerHelper.getInstance().parseXHtml(writer,document,is);
+             document.close();
+             file.close();*/
+             System.out.println("done");
+             return filepath;
+         }catch(Exception e) {
+             e.printStackTrace();
+         }
+         return filepath;
+     }
+
      //FUNCTION FOR CREATING PDF TEMPLATE OF USER FILLED DATA
-     static File pdfTemplate(Context c,ArrayList<String> grabbedDataArray) throws DocumentException, FileNotFoundException {
+     /*static File pdfTemplate(Context c,ArrayList<String> grabbedDataArray) throws DocumentException, FileNotFoundException {
          try {
              ContextWrapper cw = new ContextWrapper(c);
              File myDir = new File(Environment.getExternalStorageDirectory(), "BioAppFiles");
@@ -240,7 +280,7 @@ public interface Common {
 
                  document.add(table);
                  document.close();
-             /*PdfWriter writer= null;
+             *//*PdfWriter writer= null;
              try {
                  writer = new  PdfWriter(filepath);
                  PdfDocument pdf = new PdfDocument(writer);
@@ -298,17 +338,17 @@ public interface Common {
                  doc.setMargins(155, 155, 155, 155);
 
                  doc.close();
-                 writer.close();*/
+                 writer.close();*//*
                  return filepath;
              } catch (Exception e) {
                  e.printStackTrace();
              }
-       /*  } catch (Exception e) {
+       *//*  } catch (Exception e) {
              e.printStackTrace();
-         }*/
+         }*//*
 
          return new File("");
-     }
+     }*/
          //LOADING DATA FROM INTERNAL STORAGE
      static ArrayList<String> load_Internal_Storage(Context context, String id) throws IOException {
           SharedPreferences pref = context.getSharedPreferences("com.account.marrige", Context.MODE_PRIVATE);
