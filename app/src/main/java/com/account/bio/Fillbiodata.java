@@ -315,6 +315,4 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         }
         return mypath.getAbsolutePath();
     }
-
-
 }

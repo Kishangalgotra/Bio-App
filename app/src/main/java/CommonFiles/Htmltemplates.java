@@ -1,70 +1,59 @@
 package CommonFiles;
 
-public interface Htmltemplates {
+interface HtmlTemplates {
 
-    String template = "<!DOCTYPE html>\n" +
-            "<html>\n" +
-            "  <head>\n" +
-            "   <style>\n" +
-            "    body {\n" +
-            "        height: auto;\n" +
-            "        width: 595px;\n" +
-            "        /* to centre page on screen*/\n" +
-            "        margin-left: auto;\n" +
-            "        margin-right: auto;\n" +
+    String template1tags = "&name&#&religion&#&statetype&#&dateofbirth&#&dateofbirth&#" +
+            "&state&#&height&#&profession&#&course&#&fathername&#&fatherprofession&#" +
+            "&phonenumber&#&mothername&#&siblingcount&#&address&";
+    String template1html = "<html>\n" +
+            "<head> \n" +
+            " <style>\n" +
+            "   body {\n" +
+            "       background-color: #EBEBEB;\n" +
             "    }\n" +
-            "\t\n" +
-            "\thead{\n" +
-            "\t\tpadding-top: 30px; \n" +
+            "\thead{\t\n" +
             "\t}\n" +
-            "\t\n" +
             "\t.HD {\n" +
             "\t    height: 70px;\n" +
             "        background-color: #FF0000;\n" +
             "\t\tcolor :white;\n" +
-            "\t\tpadding-top: 30px;  \n" +
             "\t\tpadding-right: 20px;  \n" +
             "\t\ttext-align : right;\n" +
             "    }\n" +
             "\t.event-detail {\n" +
-            "        background-color: #EBEBEB;\n" +
+            "\t    margin-left: 10px;\n" +
             "\t\ttext-align: left;\n" +
             "    }\n" +
-            "\t.HDas {\n" +
-            "\t    height: 200px;\n" +
-            "        margin: 20px;\n" +
-            "        border: 5px solid;\n" +
-            "        background-color: #EBEBEB;\n" +
-            "    }\n" +
-            "\tP {\n" +
-            "\t  width: 100%; //or whatever looks best\n" +
-            "\t  margin: auto; //top and bottom margin can be added for aesthetic effect\n" +
+            "\t.header{\n" +
+            "\t  height: 70px;\n" +
+            "        background-color: #FF0000;\n" +
+            "\t\tcolor :white;\n" +
+            "\t\tpadding-right: 20px;  \n" +
+            "\t\ttext-align : right;\n" +
             "\t}\n" +
             "    </style>\n" +
-            "  </head>\n" +
-            "   <body >\n" +
-            "\t  <div class=\"event-detail\">\n" +
-            "\t\t<h2 class=\"HD\" >Name</h2>\n" +
-            "\t\t<h2>This is the acknowledgement of your registeration for attending the\n" +
-            "\t\t\tevent.</h2>\n" +
-            "\t\t<p class=\"row\">\n" +
-            "\t\t\tEvent Name:<br />Machine learning introduction for kids\n" +
-            "\t\t</p>\n" +
-            "\t\t<p class=\"row\">\n" +
-            "\t\t\tEvent Date:<br />27 May 2021\n" +
-            "\t\t</p>\n" +
-            "\t\t<p class=\"row\">\n" +
-            "\t\t\tTime:<br />10:30 AM\n" +
-            "\t\t</p>\n" +
-            "\t\t<p class=\"row\">\n" +
-            "\t\t\tVenue:<br />AMC Graduate Center,<br>25, AMC Street,<br>New York, USA.\n" +
-            "\t\t</p>\n" +
-            "\t\t<p class=\"pdf-content\">\n" +
-            "\t\t\tCoadddss our <a href=\"#\">Organizers' Team</a> if you need any support.\n" +
-            "\t\t</p>\n" +
-            "\t</div>\n" +
+            " <h2 class =\"header\">&name&</h2>\n" +
+            "</head>\n" +
             "\n" +
+            "<body>\n" +
+            " <body >\n" +
+            "\t  <div class=\"event-detail\">\n" +
+            "\t\t<p class=\"row\">Religion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&religion&</p>\n" +
+            "\t\t<p class=\"row\">State Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&statetype&</p>\n" +
+            "\t\t<p class=\"row\">Date Of Birth:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Profession:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Course:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Father'sName:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Father's Profession:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Phone Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Mother's name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">How Many Siblings:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t\t<p class=\"row\">Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&dateofbirth&</p>\n" +
+            "\t</div>\n" +
             "  </body>\n" +
+            "</body>\n" +
             "</html>\n" +
             "\n";
 }

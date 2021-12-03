@@ -2,73 +2,55 @@ package CommonFiles;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.pdf.PdfDocument;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
-
-import com.account.bio.MainActivity;
 import com.account.bio.ObjectSerializer;
 import com.itextpdf.html2pdf.HtmlConverter;
-/*import com.itextpdf.kernel.colors.WebColors;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;*/
-/*import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.html.WebColors;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;*/
-/*import com.itextpdf.kernel.colors.Color;
-import com.itextpdf.kernel.colors.DeviceRgb;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfPage;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;*/
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 
 public interface Common  {
      ArrayList<String> DataArrayLIst = new ArrayList<>();
 
      static File htmlToPdf(Context c,ArrayList<String> grabbedDataArray){
          ContextWrapper cw = new ContextWrapper(c);
+         String template =HtmlTemplates.template1html;
+         String[] templatetags = HtmlTemplates.template1tags.split("#");
+         int length =grabbedDataArray.size();
+         int sd = templatetags.length;
+         Log.i("Common pdf length","Hereasdaaaaaaaaaaaaaaaaaaa"+ length);
+         Log.i("Common pdf sd","Hereasdaaaaaaaaaaaaaaaaaaa"+ sd);
+         Log.i("Common pdf Grabbeddata","Hereasdaaaaa" + grabbedDataArray);
+         Log.i("Common pdf templateTags","Hereasdaaaa" + Arrays.asList(templatetags));
+         for(int i=0 ; i<length-1; i++){
+             template =   template.replace(templatetags[i],grabbedDataArray.get(i) );
+             Log.i("Common pdf","Hereasdaaaaaaaaaaaaaaaaaaa"+ Integer.toString(i));
+         }
+         /*doc.add(new Paragraph("Name            :"+grabbedDataArray.get(0)+""+""+grabbedDataArray.get(1)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Religion          :"+grabbedDataArray.get(2)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Language          :"+grabbedDataArray.get(3)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("BirthDate         :"+grabbedDataArray.get(4)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("BirthPlace        :"+grabbedDataArray.get(5)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Height            :"+grabbedDataArray.get(6)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Occupation        :"+grabbedDataArray.get(7)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Education         :"+grabbedDataArray.get(8)+"\n" ).setFontColor(myColor));
+         doc.add(new Paragraph("Father Name       :"+grabbedDataArray.get(9)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Father Occupation :"+grabbedDataArray.get(10)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Contact No        :"+grabbedDataArray.get(11)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Mother Name       :"+grabbedDataArray.get(12)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Number Of Sister  :"+grabbedDataArray.get(13)+"\n").setFontColor(myColor));
+         doc.add(new Paragraph("Full Adderss      :"+grabbedDataArray.get(14)+"\n").setFontColor(myColor));
+         doc.setMargins(155, 155, 155, 155);*/
          File filepath = null;
          try {
-             String k="<html><body>CodeSpeedy</body></html>";
-           //  FileOutputStream file=new FileOutputStream(new File("output1.pdf"));
              File myDir = new File(Environment.getExternalStorageDirectory(), "BioAppFiles");
              String out = System.currentTimeMillis() + ".pdf";
              if (!myDir.exists()) {
@@ -79,15 +61,7 @@ public interface Common  {
              }
              filepath = new File(myDir, out);
              FileOutputStream outputStream = new FileOutputStream(filepath);
-             HtmlConverter.convertToPdf(k, outputStream);
-             /*Document document=new Document();
-             PdfWriter writer=PdfWriter.getInstance(document, file);
-             document.open();
-             ByteArrayInputStream is=new ByteArrayInputStream(k.getBytes());
-             //XMLWorkerHelper obj =
-            // XMLWorkerHelper.getInstance().parseXHtml(writer,document,is);
-             document.close();
-             file.close();*/
+             HtmlConverter.convertToPdf(template, outputStream);
              System.out.println("done");
              return filepath;
          }catch(Exception e) {

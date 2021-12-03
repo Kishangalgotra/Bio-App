@@ -104,7 +104,7 @@ public class Pdftemplate extends Fragment {
 
             if(ActivityCompat.checkSelfPermission(getContext()
             , Manifest.permission.WRITE_EXTERNAL_STORAGE )== PackageManager.PERMISSION_GRANTED){
-                progressDialog.show();
+               // progressDialog.show();
                 path = Common.htmlToPdf(getContext(),grabbedDataArray);//Common.pdfTemplate(getContext(),grabbedDataArray);
                 PDFView pdfView = v.findViewById(R.id.pdfview);
                 pdfView.fromFile(new File(path.getAbsolutePath())).load();
