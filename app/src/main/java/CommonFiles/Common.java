@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.Toast;
 import com.account.bio.ObjectSerializer;
 import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Paragraph;
 
 import java.io.File;
@@ -23,6 +25,23 @@ public interface Common  {
      static File htmlToPdf(Context c,ArrayList<String> grabbedDataArray){
          ContextWrapper cw = new ContextWrapper(c);
          String template =HtmlTemplates.template1html;
+         String htmldf = "\n" +
+                 "<html>\n" +
+                 "  <head>\n" +
+                 "  <style>\n" +
+                 "   body {\n" +
+                 "       background-color: #EBEBEB;\n" +
+                 "    }\n" +
+                 "\t\n" +
+                 "    </style>\n" +
+                 "\t<h2 class =\"header\">&Name&</h2>\n" +
+                 "  </head>\n" +
+                 "   <body >\n" +
+                 "\t\t<p class=\"row\">Religion:&nbsp;&nbsp;&religion&</p>\n" +
+                 "\t</div>\n" +
+                 "  </body>\n" +
+                 "</html>\n" +
+                 "\n";
          String[] templatetags = HtmlTemplates.template1tags.split("#");
          int length =grabbedDataArray.size();
          int sd = templatetags.length;
@@ -30,25 +49,10 @@ public interface Common  {
          Log.i("Common pdf sd","Hereasdaaaaaaaaaaaaaaaaaaa"+ sd);
          Log.i("Common pdf Grabbeddata","Hereasdaaaaa" + grabbedDataArray);
          Log.i("Common pdf templateTags","Hereasdaaaa" + Arrays.asList(templatetags));
-         for(int i=0 ; i<length-1; i++){
-             template =   template.replace(templatetags[i],grabbedDataArray.get(i) );
-             Log.i("Common pdf","Hereasdaaaaaaaaaaaaaaaaaaa"+ Integer.toString(i));
+         for(int i=0 ; i<length-1; i++) {
+             template = template.replace(templatetags[i], grabbedDataArray.get(i));
+             Log.i("Common pdf", "Hereasdaaaaaaaaaaaaaaaaaaa" + Integer.toString(i));
          }
-         /*doc.add(new Paragraph("Name            :"+grabbedDataArray.get(0)+""+""+grabbedDataArray.get(1)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Religion          :"+grabbedDataArray.get(2)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Language          :"+grabbedDataArray.get(3)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("BirthDate         :"+grabbedDataArray.get(4)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("BirthPlace        :"+grabbedDataArray.get(5)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Height            :"+grabbedDataArray.get(6)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Occupation        :"+grabbedDataArray.get(7)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Education         :"+grabbedDataArray.get(8)+"\n" ).setFontColor(myColor));
-         doc.add(new Paragraph("Father Name       :"+grabbedDataArray.get(9)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Father Occupation :"+grabbedDataArray.get(10)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Contact No        :"+grabbedDataArray.get(11)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Mother Name       :"+grabbedDataArray.get(12)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Number Of Sister  :"+grabbedDataArray.get(13)+"\n").setFontColor(myColor));
-         doc.add(new Paragraph("Full Adderss      :"+grabbedDataArray.get(14)+"\n").setFontColor(myColor));
-         doc.setMargins(155, 155, 155, 155);*/
          File filepath = null;
          try {
              File myDir = new File(Environment.getExternalStorageDirectory(), "BioAppFiles");
@@ -60,8 +64,11 @@ public interface Common  {
                  Toast.makeText(cw, "1", Toast.LENGTH_SHORT).show();
              }
              filepath = new File(myDir, out);
+             PdfWriter writer= null;
+             writer = new PdfWriter(filepath);
+            // PdfDocument pdf = new PdfDocument(writer);
              FileOutputStream outputStream = new FileOutputStream(filepath);
-             HtmlConverter.convertToPdf(template, outputStream);
+             HtmlConverter.convertToPdf(template, writer);
              System.out.println("done");
              return filepath;
          }catch(Exception e) {

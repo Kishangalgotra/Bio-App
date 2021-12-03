@@ -129,22 +129,22 @@ public class Adddatatotemplate extends Fragment {
 
     }
     private void fill_data(ArrayList<String> arrayList){
-        String name = arrayList.get(0) + arrayList.get(1);
-        name_.setText(name);
-        religion_.setText(arrayList.get(2));
-        language_.setText(arrayList.get(3));
-        birthdate_.setText(arrayList.get(4));
-        birthplace_.setText(arrayList.get(5));
-        height_.setText(arrayList.get(6));
-        occupation_.setText(arrayList.get(7));
-        education_.setText(arrayList.get(8));
-        father_name_.setText(arrayList.get(9));
-        father_occupation_.setText(arrayList.get(10));
-        contact_no_.setText(arrayList.get(11));
-        mother_name_.setText(arrayList.get(12));
-        number_of_sister_.setText(arrayList.get(13));
-        full_adderss_.setText(arrayList.get(14));
-        loadImageFromStorage(arrayList.get(15));
+        //String name = arrayList.get(0) + arrayList.get(1);
+        name_.setText(arrayList.get(1));
+        religion_.setText(arrayList.get(1));
+        language_.setText(arrayList.get(2));
+        birthdate_.setText(arrayList.get(3));
+        birthplace_.setText(arrayList.get(4));
+        height_.setText(arrayList.get(5));
+        occupation_.setText(arrayList.get(6));
+        education_.setText(arrayList.get(7));
+        father_name_.setText(arrayList.get(8));
+        father_occupation_.setText(arrayList.get(9));
+        contact_no_.setText(arrayList.get(10));
+        mother_name_.setText(arrayList.get(11));
+        number_of_sister_.setText(arrayList.get(12));
+        full_adderss_.setText(arrayList.get(13));
+        loadImageFromStorage(arrayList.get(14));
     }
     private void previewPdf(String pdfFile) {
         PackageManager packageManager = getContext().getPackageManager();

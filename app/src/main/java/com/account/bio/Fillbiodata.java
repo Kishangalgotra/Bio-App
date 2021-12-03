@@ -242,8 +242,8 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
     public boolean Add_to_Memory() throws IOException {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.account.marrige", Context.MODE_PRIVATE);
             ArrayList<String> data = new ArrayList<>();
-            data.add(fist_name.getText().toString());
-            data.add(last_name.getText().toString());
+            data.add(fist_name.getText().toString() + " " +last_name.getText().toString());
+          // data.add(last_name.getText().toString());
             data.add(religion.getText().toString());
             data.add(language.getText().toString());
             data.add(birthdate.getText().toString());
