@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -88,6 +90,8 @@ public class Adddatatotemplate extends Fragment {
         ArrayList<String> finalArrayList = arrayList;
         next.setOnClickListener(v1 -> {
          try {
+             final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim);
+             next.startAnimation(myAnim);
              String str = new Gson().toJson(finalArrayList);
              Log.i("GSON ::",str);
              Bundle bundle = new Bundle();

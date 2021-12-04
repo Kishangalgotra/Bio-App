@@ -55,6 +55,8 @@
     <string name="height_">Height</string>
     <string name="birthplace_">BirthPlace</string>
     <string name="next">NEXT</string>
+    <string name="share">Share</string>
     <string name="download">Download</string>
+    <string name="file_has_been_saved_to_your_local_storage">File has been Saved to your Local Storage.</string>
 
 </resources>

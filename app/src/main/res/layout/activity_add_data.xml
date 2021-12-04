@@ -40,6 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:background="@android:color/holo_red_light"
+                android:fontFamily="@font/nunito_sans_light"
                 android:foregroundGravity="center"
                 android:gravity="center"
                 android:padding="7dp"
@@ -54,7 +55,8 @@
                 android:layout_width="150dp"
                 android:layout_height="138dp"
                 android:layout_margin="10dp"
-                app:srcCompat="@drawable/ic_baseline_image_search_24" />
+                app:srcCompat="@drawable/ic_baseline_image_search_24"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/textView"
@@ -66,31 +68,23 @@
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="18sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="horizontal">
-
                 <EditText
                     android:id="@+id/view_add_first_name"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:hint="@string/first_name"
                     android:inputType="textPersonName"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/nunito_sans_light"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/view_add_last_name"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-
                     android:hint="@string/last_name"
                     android:inputType="textPersonName"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:fontFamily="@font/nunito_sans_light"
+                    android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_religion"
@@ -99,9 +93,9 @@
                 android:autofillHints="Name"
                 android:ems="10"
                 android:hint="@string/religion"
-
+                android:fontFamily="@font/nunito_sans_light"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_lang"
@@ -109,20 +103,23 @@
                 android:layout_height="wrap_content"
                 android:autofillHints="Name"
                 android:ems="10"
+                android:fontFamily="@font/nunito_sans_light"
                 android:hint="@string/language"
-
+                android:nextFocusDown="@id/view_add_birthplace"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:focusable="true"
+                android:fontFamily="@font/nunito_sans_light"
                 android:hint="BirthDate"
-                android:inputType="date"
-
-                android:textSize="14sp" />
+                android:focusableInTouchMode="true"
+                android:inputType=""
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_birthplace"
@@ -130,9 +127,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/birthplace"
-
-                android:inputType="time"
-                android:textSize="14sp" />
+                android:inputType="text"
+                android:fontFamily="@font/nunito_sans_light"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_height"
@@ -140,9 +137,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/height"
-                android:inputType="textPersonName"
-
-                android:textSize="14sp" />
+                android:fontFamily="@font/nunito_sans_light"
+                android:inputType="numberDecimal"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_occupation"
@@ -151,8 +148,8 @@
                 android:ems="10"
                 android:hint="@string/occupation"
                 android:inputType="textPersonName"
-
-                android:textSize="14sp" />
+                android:fontFamily="@font/nunito_sans_light"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_education"
@@ -160,9 +157,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/education"
-
+                android:fontFamily="@font/nunito_sans_light"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
@@ -171,6 +168,7 @@
                 android:clickable="true"
                 android:ems="10"
                 android:enabled="false"
+                android:fontFamily="@font/nunito_sans_light"
                 android:hint="@string/others"
                 android:inputType="textPersonName" />
 
@@ -179,7 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-
+               
                 android:fontFamily="@font/montserrat_alternates"
                 android:paddingTop="10dp"
                 android:text="@string/family_background"
@@ -189,22 +187,23 @@
             <EditText
                 android:id="@+id/view_add_father_name"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/nunito_sans_light"
                 android:layout_height="wrap_content"
                 android:ems="10"
-
+               
                 android:hint="@string/father_name"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_father_occupation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-
+                android:fontFamily="@font/nunito_sans_light"
                 android:hint="@string/father_occupation"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_contact"
@@ -212,9 +211,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/contact_no"
-
+                android:fontFamily="@font/nunito_sans_light"
                 android:inputType="phone"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_mother_name"
@@ -223,8 +222,8 @@
                 android:ems="10"
                 android:hint="@string/mother_name"
                 android:inputType="textPersonName"
-
-                android:textSize="14sp" />
+                android:fontFamily="@font/nunito_sans_light"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_no_of_sister"
@@ -233,17 +232,18 @@
                 android:ems="10"
                 android:hint="@string/number_of_sister"
                 android:inputType="textPersonName"
-
-                android:textSize="14sp" />
+                android:fontFamily="@font/nunito_sans_light"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/view_add_full_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="@font/nunito_sans_light"
                 android:hint="@string/full_address"
                 android:inputType="textPersonName"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
              <LinearLayout
                  android:layout_width="match_parent"
@@ -251,24 +251,23 @@
                  android:orientation="horizontal"
                  android:layout_margin="10dp"
                  android:weightSum="3">
-            <ProgressBar
-                android:id="@+id/progressBar_id"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="@color/colorPrimary"
-                android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/next_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-
-                android:background="@color/colorPrimary"
-
-                android:layout_weight="2"
-                android:text="@string/next"
-                android:textColor="@color/customwhite" />
+                <ProgressBar
+                    android:id="@+id/progressBar_id"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/colorPrimary"
+                    android:layout_weight="1"/>
+    
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_light"
+                    android:background="@color/colorPrimary"
+                    android:layout_weight="2"
+                    android:text="@string/next"
+                    android:textColor="@color/customwhite" />
              </LinearLayout>
 
         </LinearLayout>

@@ -3,6 +3,7 @@ package com.account.bio;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -21,6 +22,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -88,7 +91,7 @@ public class Pdftemplate extends Fragment {
             Button sharePdf = v.findViewById(R.id.sharePdf);
             downloadPdf = v.findViewById(R.id.downloadpdf);
             Log.i("Step ::","1");
-            downloadPdf.setOnClickListener(v1 -> getActivity().onBackPressed());
+
             String grabbeddataString=getArguments().getString("UserData");
             Log.i("Step ::","2"+grabbeddataString);
             assert grabbeddataString != null;
@@ -115,6 +118,8 @@ public class Pdftemplate extends Fragment {
             }
             File finalPath = path;
             sharePdf.setOnClickListener(v12 -> {
+                final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim);
+                sharePdf.startAnimation(myAnim);
                 try {
                     File filepath2 = new File(finalPath.getAbsoluteFile().getPath());
                     Uri uri = Uri.fromFile(filepath2);
@@ -129,7 +134,21 @@ public class Pdftemplate extends Fragment {
                     e.printStackTrace();
                 }
             });
-
+            downloadPdf.setOnClickListener(v1 ->{
+                final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.anim);
+                downloadPdf.startAnimation(myAnim);
+                File filepath2 = new File(finalPath.getAbsoluteFile().getPath());
+                Uri pathw = Uri.fromFile(filepath2);
+                Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW);
+                pdfOpenintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                pdfOpenintent.setDataAndType(pathw, "application/pdf");
+                Intent intent = Intent.createChooser(pdfOpenintent, "Open File");
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    // Instruct the user to install a PDF reader here, or something
+                }
+            });
             ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
@@ -141,9 +160,6 @@ public class Pdftemplate extends Fragment {
         return v;
     }
 
-    private void askPermission() {
-        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_CODE);
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {

@@ -2,9 +2,12 @@ package com.account.bio;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -13,38 +16,46 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Fillbiodata extends AppCompatActivity  implements View.OnClickListener{
+public class Fillbiodata extends AppCompatActivity  implements View.OnClickListener {
   String id ="1";
-  EditText fist_name,last_name,religion,language,birthdate,birthplace,height,occupation,education,father_name,father_occupation,
+  EditText fist_name,last_name,religion,language,birthplace,height,occupation,education,father_name,father_occupation,
            contact_no,mother_name,number_of_sister,full_adderss ;
+  static EditText birthdate;
   Button next;
   ImageView image;
   private Uri imageuri;
   int a = 0;
   private ProgressBar progressbar;
-  private Handler handler = new Handler();
+  private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,30 +63,56 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         setContentView(R.layout.activity_add_data);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         instantiate();
-       // fill_data_auto();
+        // fill_data_auto();
         next.setOnClickListener(this);
         image.setOnClickListener(this);
+        birthdate.setOnClickListener(this);
+        height.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                   // Toast.makeText(getApplicationContext(), "sadasdasdsa", Toast.LENGTH_SHORT).show();
+
+                    height.setText(height.getText().toString() + "  feet");
+                }
+            }
+        });
+        /*birthdate.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                // Some logic here.
+                Toast.makeText(this, "sadasdasdsa", Toast.LENGTH_SHORT).show();
+                return true; // Focus will do whatever you put in the logic.
+            }
+            return false;  // Focus will change according to the actionId
+        });*/
     }
 
-    //Filling Data
-    public  void fill_data_auto(){
-        fist_name.setText("Kishan");
-        last_name.setText("Kumar");
-        religion.setText("Hindu");
-        language.setText("Punjabi");
-        birthdate.setText("16-11-2021");
-        birthplace.setText("Ludhiana");
-        height.setText("5.9feet");
-        occupation.setText("Engineer");
-        education.setText("Btech");
-        father_name.setText("Somnath");
-        father_occupation.setText("Businessman");
-        contact_no.setText("9914916600");
-        mother_name.setText("Shanta Rani");
-        number_of_sister.setText("1");
-        full_adderss.setText("new Moti Nagar");
+/*    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tvDate = findViewById(R.id.tvDate);
+        btPickDate = findViewById(R.id.btPickDate);
+        btPickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Please note that use your package name here
+                DatePicker mDatePickerDialogFragment;
+                mDatePickerDialogFragment = new DatePicker();
+                mDatePickerDialogFragment.show(getSupportFragmentManager(), "DATE PICK");
+            }
+        });
+    }*/
 
-    }
+ /*   @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar mCalendar = Calendar.getInstance();
+        mCalendar.set(Calendar.YEAR, year);
+        mCalendar.set(Calendar.MONTH, month);
+        mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String selectedDate = DateFormat.getDateInstance(DateFormat.FULL).format(mCalendar.getTime());
+        tvDate.setText(selectedDate);
+    }*/
+
     //VALIDATING FIELDS DATA
     public boolean validate(){
        if(fist_name.getText().toString().isEmpty()){
@@ -169,6 +206,7 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
          // progressbar.getProgressDrawable().setColorFilter(
          //     Color.RED, android.graphics.PorterDuff.Mode.);
     }
+
     //CLICK EVENTS OF ALL BUTTON OF THIS ACTIVITY
     @Override
     public void onClick(View v) {
@@ -177,47 +215,48 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
                 openImage();
                 break;
 
-            case R.id.next_button :
-                /*if(validate()){ // Validating All fields Data
+            case R.id.view_add_birthdate :
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+               break;
 
-                    //Execution Code for Filled Data
-                    Intent intent = new Intent(getApplicationContext(),template.class);
-                    startActivity(intent);
-                }*/
-                try {
-                    final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.anim);
-                    next.startAnimation(myAnim);
-                    progressbar.setVisibility(View.VISIBLE);
-                    next.setEnabled(false);
-                    //a = progressbar.getProgress();
-                    new Thread(() -> {
-                             try {
-                                  if( Add_to_Memory()){
-                                        //Fragment temp =null;
-                                      try {
-                                          Adddatatotemplate temp = new Adddatatotemplate();
-                                          FragmentManager fragmentManager =getSupportFragmentManager();
-                                          fragmentManager.beginTransaction().add(R.id.add_data_layout,temp).commit();
-                                          progressbar.setVisibility(View.INVISIBLE);
-                                      } catch (Exception e) {
-                                          e.printStackTrace();
-                                      }
-                                  }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+            case R.id.next_button :
+                if(validate()) { // Validating All fields Data
+                    try {
+                        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.anim);
+                        next.startAnimation(myAnim);
+                        progressbar.setVisibility(View.VISIBLE);
+                        next.setEnabled(false);
+                        new Thread(() -> {
+                            try {
+                                if (Add_to_Memory()) {
+                                    //Fragment temp =null;
+                                    try {
+                                        Adddatatotemplate temp = new Adddatatotemplate();
+                                        FragmentManager fragmentManager = getSupportFragmentManager();
+                                        fragmentManager.beginTransaction().add(R.id.add_data_layout, temp).commit();
+                                        progressbar.setVisibility(View.INVISIBLE);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
                                 }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             try {// Sleep for 50 ms to show progress you can change it as well.
                                 Thread.sleep(50);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
-                    }).start();
-                } catch (Resources.NotFoundException e) {
-                    e.printStackTrace();
+                        }).start();
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
         }
     }
+
     // FOR Opening Image Gallery
     public void openImage() {
         Intent intent = new Intent();
@@ -225,6 +264,7 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 2);
     }
+
     //RESULT PASSED BY ACTIVITY RESULT TO USER PROFILE
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -243,7 +283,7 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.account.marrige", Context.MODE_PRIVATE);
             ArrayList<String> data = new ArrayList<>();
             data.add(fist_name.getText().toString() + " " +last_name.getText().toString());
-          // data.add(last_name.getText().toString());
+             // data.add(last_name.getText().toString());
             data.add(religion.getText().toString());
             data.add(language.getText().toString());
             data.add(birthdate.getText().toString());
@@ -275,12 +315,14 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
                 return false;
             }
     }
+
     // method for base64 to bitmap
     public static Bitmap decodeBase64(String input) {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory
                 .decodeByteArray(decodedByte, 0, decodedByte.length);
     }
+
     // method for bitmap to base64
     public static String encodeTobase64(Bitmap image) {
         Bitmap immage = image;
@@ -315,4 +357,44 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         }
         return mypath.getAbsolutePath();
     }
+
+
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
+            dialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+            return  dialog;
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            birthdate.setText(""+day+"/"+month+"/"+year);
+        }
+    }
+
+    //Filling Data
+    public  void fill_data_auto(){
+        fist_name.setText("Kishan");
+        last_name.setText("Kumar");
+        religion.setText("Hindu");
+        language.setText("Punjabi");
+        birthdate.setText("16-11-2021");
+        birthplace.setText("Ludhiana");
+        height.setText("5.9feet");
+        occupation.setText("Engineer");
+        education.setText("Btech");
+        father_name.setText("Somnath");
+        father_occupation.setText("Businessman");
+        contact_no.setText("9914916600");
+        mother_name.setText("Shanta Rani");
+        number_of_sister.setText("1");
+        full_adderss.setText("new Moti Nagar");
+    }
+
 }
