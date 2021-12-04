@@ -52,7 +52,7 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
         setContentView(R.layout.activity_add_data);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         instantiate();
-        fill_data_auto();
+       // fill_data_auto();
         next.setOnClickListener(this);
         image.setOnClickListener(this);
     }

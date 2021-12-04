@@ -68,6 +68,7 @@ public interface Common  {
              writer = new PdfWriter(filepath);
             // PdfDocument pdf = new PdfDocument(writer);
              FileOutputStream outputStream = new FileOutputStream(filepath);
+             Log.i("Common pdf", "template" + template);
              HtmlConverter.convertToPdf(template, writer);
              System.out.println("done");
              return filepath;

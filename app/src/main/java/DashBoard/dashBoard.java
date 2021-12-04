@@ -17,31 +17,26 @@ public class dashBoard extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
         getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment()).commit();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_bar_dashboard);
         bottomNavigationView.setSelectedItemId(R.id.Home);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment temp =null;
-                switch (item.getItemId()) {
-                    case R.id.Setting:
-                        temp = new settingFragment();
-                        break;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            Fragment temp =null;
+            switch (item.getItemId()) {
+                case R.id.Setting:
+                    temp = new settingFragment();
+                    break;
 
-                    case R.id.Home:
-                        temp = new HomeFragment();
-                        break;
+                case R.id.Home:
+                    temp = new HomeFragment();
+                    break;
 
-                    case R.id.View_BioData:
-                        temp = new Viewbiodatafragment();
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame,temp).commit();
-                return true;
+                case R.id.View_BioData:
+                    temp = new Viewbiodatafragment();
+                    break;
             }
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame,temp).commit();
+            return true;
         });
     }
 }
