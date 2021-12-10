@@ -29,7 +29,6 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,6 +37,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public interface Common  {
+
      ArrayList<String> DataArrayLIst = new ArrayList<>();
 
      static File convertDoctopdf(Context c,ArrayList<String> grabbedDataArray){
@@ -46,7 +46,49 @@ public interface Common  {
          return filepath;
      }
 
-     static File htmlToPdf(Context c,ArrayList<String> grabbedDataArray){
+    static void docToPDF() throws IOException,
+            org.apache.poi.openxml4j.exceptions.InvalidFormatException {
+        try {
+
+            XWPFDocument doc = new XWPFDocument(
+                    OPCPackage.open("d:\\1\\rpt.docx"));
+            for (XWPFParagraph p : doc.getParagraphs()) {
+                List<XWPFRun> runs = p.getRuns();
+                if (runs != null) {
+                    for (XWPFRun r : runs) {
+                        String text = r.getText(0);
+                        if (text != null && text.contains("$$key$$")) {
+                            text = text.replace("$$key$$", "ABCD");//your content
+                            r.setText(text, 0);
+                        }
+                    }
+                }
+            }
+
+            for (XWPFTable tbl : doc.getTables()) {
+                for (XWPFTableRow row : tbl.getRows()) {
+                    for (XWPFTableCell cell : row.getTableCells()) {
+                        for (XWPFParagraph p : cell.getParagraphs()) {
+                            for (XWPFRun r : p.getRuns()) {
+                                String text = r.getText(0);
+                                if (text != null && text.contains("$$key$$")) {
+                                    text = text.replace("$$key$$", "abcd");
+                                    r.setText(text, 0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            doc.write(new FileOutputStream("d:\\1\\output.docx"));
+        } finally {
+
+        }
+    }
+
+
+    static File htmlToPdf(Context c,ArrayList<String> grabbedDataArray){
          ContextWrapper cw = new ContextWrapper(c);
          String template =HtmlTemplates.rounhtmltemplate;
          String htmldf = "\n" +
@@ -389,46 +431,6 @@ public interface Common  {
         }*/
    //}
 
-     class Find_Replace_DOCX {
-        public static void main(String args[]) throws IOException,
-                org.apache.poi.openxml4j.exceptions.InvalidFormatException {
-            try {
 
-                XWPFDocument doc = new XWPFDocument(
-                        OPCPackage.open("d:\\1\\rpt.docx"));
-                for (XWPFParagraph p : doc.getParagraphs()) {
-                    List<XWPFRun> runs = p.getRuns();
-                    if (runs != null) {
-                        for (XWPFRun r : runs) {
-                            String text = r.getText(0);
-                            if (text != null && text.contains("$$key$$")) {
-                                text = text.replace("$$key$$", "ABCD");//your content
-                                r.setText(text, 0);
-                            }
-                        }
-                    }
-                }
 
-                for (XWPFTable tbl : doc.getTables()) {
-                    for (XWPFTableRow row : tbl.getRows()) {
-                        for (XWPFTableCell cell : row.getTableCells()) {
-                            for (XWPFParagraph p : cell.getParagraphs()) {
-                                for (XWPFRun r : p.getRuns()) {
-                                    String text = r.getText(0);
-                                    if (text != null && text.contains("$$key$$")) {
-                                        text = text.replace("$$key$$", "abcd");
-                                        r.setText(text, 0);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                doc.write(new FileOutputStream("d:\\1\\output.docx"));
-            } finally {
-
-            }
-        }
-    }
 }
