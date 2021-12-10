@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732816576411",
+    "project_id": "biomaker-5a74c",
+    "storage_bucket": "biomaker-5a74c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732816576411:android:c6ddafe17023f2a55b9b3e",
+        "android_client_info": {
+          "package_name": "com.account.marrige"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732816576411-bh4slotlvu0a16ttgvphahecknf18u4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh4FsOg0vRbuxPaZ5mTihd11KXVkR9VCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732816576411-bh4slotlvu0a16ttgvphahecknf18u4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
