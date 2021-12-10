@@ -390,14 +390,9 @@ public interface Common  {
    //}
 
      class Find_Replace_DOCX {
-
         public static void main(String args[]) throws IOException,
                 org.apache.poi.openxml4j.exceptions.InvalidFormatException {
             try {
-
-              //  *
-                // * if uploaded doc then use HWPF else if uploaded Docx file use
-                // *XWPFDocument
 
                 XWPFDocument doc = new XWPFDocument(
                         OPCPackage.open("d:\\1\\rpt.docx"));
@@ -434,8 +429,6 @@ public interface Common  {
             } finally {
 
             }
-
         }
-
     }
 }
