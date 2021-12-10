@@ -13,7 +13,15 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Paragraph;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+/*import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;*/
+
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -383,14 +391,14 @@ public interface Common  {
 
      class Find_Replace_DOCX {
 
-        public static void main(String args[]) throws IOException, InvalidFormatException,
+        public static void main(String args[]) throws IOException,
                 org.apache.poi.openxml4j.exceptions.InvalidFormatException {
             try {
 
-                /**
-                 * if uploaded doc then use HWPF else if uploaded Docx file use
-                 * XWPFDocument
-                 */
+              //  *
+                // * if uploaded doc then use HWPF else if uploaded Docx file use
+                // *XWPFDocument
+
                 XWPFDocument doc = new XWPFDocument(
                         OPCPackage.open("d:\\1\\rpt.docx"));
                 for (XWPFParagraph p : doc.getParagraphs()) {

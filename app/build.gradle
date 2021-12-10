@@ -43,7 +43,11 @@ dependencies {
    // implementation 'com.itextpdf:itextpdf:5.0.6'
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation fileTree(dir: 'I:\\WorkSpace\\WorkSpace Java\\library', include: ['*.aar', '*.jar'], exclude: [])
+   /* implementation 'org.apache.poi:poi:3.12'
+    implementation 'org.apache.poi:poi-ooxml:3.12'
+    implementation 'com.fasterxml:aalto-xml:1.0.0'*/
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
+    implementation 'javax.xml.stream:stax-api:1.0'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
