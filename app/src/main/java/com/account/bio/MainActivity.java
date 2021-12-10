@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import java.io.File;
 import java.util.Objects;
 
 import DashBoard.dashBoard;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         CountDownTimer obj = new CountDownTimer(1000,3) {
             @Override
             public void onTick(long millisUntilFinished) {
-
+                getClass().getResourceAsStream("ff.doc");
             }
 
             @Override
