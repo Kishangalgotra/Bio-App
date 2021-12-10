@@ -437,7 +437,7 @@
 
                 <Button
                     android:id="@+id/template_data_show_next"
-                    android:background="@color/colorPrimary"
+                    android:background="@android:color/holo_red_light"
                     android:foregroundGravity="center"
                     android:textColor="@color/customwhite"
                     android:layout_margin="10dp"
