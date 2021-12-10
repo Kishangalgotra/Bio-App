@@ -20,6 +20,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/customwhite"
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
@@ -44,7 +45,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
@@ -83,7 +84,7 @@
                         android:hint="@string/first_name"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                     <TextView
                         android:id="@+id/entered_name_"
                         android:layout_width="match_parent"
@@ -91,7 +92,7 @@
                         android:hint="@string/first_name"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,7 +107,7 @@
                         android:hint="@string/height"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_height_"
@@ -115,7 +116,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -130,7 +131,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_religion_"
@@ -139,7 +140,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -156,7 +157,7 @@
                         android:hint="@string/language"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_lang_"
@@ -165,7 +166,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,7 +182,7 @@
                         android:hint="BirthDate"
                         android:inputType="date"
                         android:layout_weight="2"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_birthdate_"
@@ -190,7 +191,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -205,7 +206,7 @@
                         android:hint="@string/birthplace"
                         android:inputType="time"
                         android:layout_weight="2"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_birthplace_"
@@ -214,7 +215,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -229,7 +230,7 @@
                         android:hint="@string/occupation"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_occupation_"
@@ -238,7 +239,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -254,7 +255,7 @@
                         android:hint="@string/education"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
 
                     <TextView
@@ -264,7 +265,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -289,7 +290,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -304,7 +305,7 @@
                         android:layout_weight="2"
                         android:hint="@string/father_name"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_father_name_"
@@ -313,7 +314,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -328,7 +329,7 @@
                         android:layout_weight="2"
                         android:hint="@string/father_occupation"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_father_occupation_"
@@ -337,7 +338,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -352,7 +353,7 @@
                         android:layout_weight="2"
                         android:hint="@string/contact_no"
                         android:inputType="phone"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/entered_contact_"
@@ -361,7 +362,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -377,7 +378,7 @@
                         android:hint="@string/mother_name"
                         android:inputType="textPersonName"
 
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                     <TextView
                         android:id="@+id/entered_mother_name_"
                         android:layout_width="match_parent"
@@ -385,7 +386,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -401,7 +402,7 @@
                         android:layout_weight="2"
                         android:hint="@string/number_of_sister"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                     <TextView
                         android:id="@+id/entered_no_of_sister_"
                         android:layout_width="match_parent"
@@ -409,7 +410,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -424,7 +425,7 @@
                         android:hint="@string/full_address"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                     <TextView
                         android:id="@+id/entered_full_address_"
                         android:layout_width="match_parent"
@@ -432,7 +433,7 @@
                         android:hint="@string/religion"
                         android:layout_weight="2"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="21sp" />
                 </LinearLayout>
 
                 <Button
@@ -441,7 +442,7 @@
                     android:foregroundGravity="center"
                     android:textColor="@color/customwhite"
                     android:layout_margin="10dp"
-                    android:textSize="18sp"
+                    android:textSize="21sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Next">

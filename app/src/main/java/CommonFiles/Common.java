@@ -3,6 +3,7 @@ package CommonFiles;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
@@ -32,6 +33,8 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +48,30 @@ public interface Common  {
 
          return filepath;
      }
+
+    static void copyFile(Context context) {
+        File dir = new File(Environment.getExternalStorageDirectory(), "BioAppFiles");
+        String path = Environment.getExternalStorageDirectory()+"/BioAppFiles/";
+        File file = new File(dir,"Locked CV.docx");
+        if (!file.exists()) {
+            dir.mkdirs();
+            copyFile(context);
+        }
+
+        AssetManager assetManager = context.getAssets();
+        try {
+            InputStream in = assetManager.open("Locked CV.docx");
+            OutputStream out = new FileOutputStream(path+"Locked CV.docx");
+            byte[] buffer = new byte[1024];
+            int read = in.read(buffer);
+            while (read != -1) {
+                out.write(buffer, 0, read);
+                read = in.read(buffer);
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
 
     static void docToPDF() throws IOException,
             org.apache.poi.openxml4j.exceptions.InvalidFormatException {
