@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@android:color/holo_red_light"
+                android:background="@color/colorPrimary"
                 android:fontFamily="@font/nunito_sans_light"
                 android:foregroundGravity="center"
                 android:gravity="center"
@@ -116,7 +116,7 @@
                 android:ems="10"
                 android:focusable="true"
                 android:fontFamily="@font/nunito_sans_light"
-                android:hint="BirthDate"
+                android:hint="@string/birthdate"
                 android:focusableInTouchMode="true"
                 android:inputType=""
                 android:textSize="16sp" />

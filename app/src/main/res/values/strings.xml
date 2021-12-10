@@ -58,5 +58,6 @@
     <string name="share">Share</string>
     <string name="download">Download</string>
     <string name="file_has_been_saved_to_your_local_storage">File has been Saved to your Local Storage.</string>
+    <string name="birthdate">BirthDate</string>
 
 </resources>

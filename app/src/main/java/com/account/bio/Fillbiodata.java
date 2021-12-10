@@ -1,10 +1,5 @@
 package com.account.bio;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -16,6 +11,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,24 +19,24 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -136,7 +132,8 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
             return false;
         }
         if(birthdate.getText().toString().isEmpty()){
-            birthdate.setError("please Fill Birth Date");
+            birthdate.setBackgroundColor(Color.RED);
+           // birthdate.setError("please Fill Birth Date");
             birthdate.requestFocus();
             return false;
         } if(birthplace.getText().toString().isEmpty()){
@@ -180,6 +177,7 @@ public class Fillbiodata extends AppCompatActivity  implements View.OnClickListe
             full_adderss.requestFocus();
             return false;
         }
+
         return true;
     }
     //INSTANTIATE ALL THE COMPONENTS OF XML FILE HERE
