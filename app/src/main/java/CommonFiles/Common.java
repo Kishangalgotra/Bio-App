@@ -24,6 +24,8 @@ import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;*/
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -31,10 +33,14 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,19 +79,23 @@ public interface Common  {
         }
     }
 
-    static void docToPDF() throws IOException,
-            org.apache.poi.openxml4j.exceptions.InvalidFormatException {
+    static void docToPDF(Context c) throws IOException, org.apache.poi.openxml4j.exceptions.InvalidFormatException {
+        String path = Environment.getExternalStorageDirectory()+"/BioAppFiles/"+"Locked CV.docx";
         try {
-
-            XWPFDocument doc = new XWPFDocument(
-                    OPCPackage.open("d:\\1\\rpt.docx"));
+            Toast.makeText(c.getApplicationContext(), "docToPDF check 1", Toast.LENGTH_SHORT).show();
+           /* XWPFDocument doc = new XWPFDocument(OPCPackage.open(path+"Locked CV.docx"));
+            Toast.makeText(c.getApplicationContext(), "docToPDF check 1", Toast.LENGTH_SHORT).show();
             for (XWPFParagraph p : doc.getParagraphs()) {
+                Toast.makeText(c.getApplicationContext(), "docToPDF check 2", Toast.LENGTH_SHORT).show();
                 List<XWPFRun> runs = p.getRuns();
                 if (runs != null) {
+                    Toast.makeText(c.getApplicationContext(), "docToPDF check 3", Toast.LENGTH_SHORT).show();
                     for (XWPFRun r : runs) {
+                        Toast.makeText(c.getApplicationContext(), "docToPDF check 4", Toast.LENGTH_SHORT).show();
                         String text = r.getText(0);
-                        if (text != null && text.contains("$$key$$")) {
-                            text = text.replace("$$key$$", "ABCD");//your content
+                        if (text != null && text.contains("Kishan")) {
+                            Toast.makeText(c.getApplicationContext(), "docToPDF check 4", Toast.LENGTH_SHORT).show();
+                            text = text.replace("Kishan", "Changed one");//your content
                             r.setText(text, 0);
                         }
                     }
@@ -107,9 +117,85 @@ public interface Common  {
                     }
                 }
             }
+*/
+            String filePath = Environment.getExternalStorageDirectory()+"/BioAppFiles/"+"Locked CV.docx";
+            String tmpFilePath =Environment.getExternalStorageDirectory()+"/BioAppFiles/"+"~Locked CV.docx";
 
-            doc.write(new FileOutputStream("d:\\1\\output.docx"));
-        } finally {
+            File file = Files.copy(Paths.get(filePath), Paths.get(tmpFilePath), StandardCopyOption.REPLACE_EXISTING).toFile();
+
+
+            try  {
+                //AssetManager assetManager = c.getAssets();
+
+                //InputStream in = assetManager.open("Locked CV.docx");
+                //XWPFDocument doc = new XWPFDocument(new FileInputStream(path));//Files.newInputStream(Paths.get(path)));
+                XWPFDocument doc = new XWPFDocument(new FileInputStream(file));
+                Toast.makeText(c.getApplicationContext(), "docToPDF check 22", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(c.getApplicationContext(), "docToPDF check 1", Toast.LENGTH_SHORT).show();
+                doc.getLastParagraph().getText();
+                Toast.makeText(c.getApplicationContext(),  doc.getLastParagraph().getText(), Toast.LENGTH_SHORT).show();
+                /*for (XWPFParagraph p : doc.getParagraphs()) {
+                    Toast.makeText(c.getApplicationContext(), p.getText().toString(), Toast.LENGTH_SHORT).show();
+                    List<XWPFRun> runs = p.getRuns();
+                    if (runs != null) {
+                        Toast.makeText(c.getApplicationContext(), "docToPDF check 3", Toast.LENGTH_SHORT).show();
+                        for (XWPFRun r : runs) {
+                            Toast.makeText(c.getApplicationContext(), "docToPDF check 4", Toast.LENGTH_SHORT).show();
+                            String text = r.getText(0);
+                            Toast.makeText(c.getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                            if (text != null && text.contains("Kishan")) {
+                                Toast.makeText(c.getApplicationContext(), "docToPDF check 5", Toast.LENGTH_SHORT).show();
+                                text = text.replace("Kishan", "Changed one");//your content
+                                r.setText(text, 0);
+                            }
+                        }
+                    }
+                }
+
+                for (XWPFTable tbl : doc.getTables()) {
+                    for (XWPFTableRow row : tbl.getRows()) {
+                        for (XWPFTableCell cell : row.getTableCells()) {
+                            for (XWPFParagraph p : cell.getParagraphs()) {
+                                for (XWPFRun r : p.getRuns()) {
+                                    String text = r.getText(0);
+                                    if (text != null && text.contains("$$key$$")) {
+                                        text = text.replace("$$key$$", "abcd");
+                                        r.setText(text, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }*/
+                /*    XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+                String docText = xwpfWordExtractor.getText();
+                 Log.i("Document",docText);
+
+                // find number of words in the document
+                long count = Arrays.stream(docText.split("\\s+")).count();
+                System.out.println("Total words: " + count);
+                *//* // create a paragraph
+                XWPFParagraph p1 = doc.createParagraph();
+                p1.setAlignment(ParagraphAlignment.CENTER);
+
+                // set font
+                XWPFRun r1 = p1.createRun();
+                r1.setBold(true);
+                r1.setItalic(true);
+                r1.setFontSize(22);
+                r1.setFontFamily("New Roman");
+                r1.setText("I am first paragraph.");*//*
+                doc.write(new FileOutputStream(path));
+                doc.close();*/
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
 
         }
     }

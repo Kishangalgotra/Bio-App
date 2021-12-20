@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserrat_alternates"
+                android:fontFamily="@font/nunito_sans_light"
                 android:text="@string/personal_data"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="18sp" />
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                
-                android:fontFamily="@font/montserrat_alternates"
+                android:fontFamily="@font/nunito_sans_light"
                 android:paddingTop="10dp"
                 android:text="@string/family_background"
                 android:textColor="@color/design_default_color_on_secondary"
@@ -258,16 +258,16 @@
                     android:layout_height="wrap_content"
                     android:indeterminateTint="@color/colorPrimary"
                     android:layout_weight="1"/>
-    
-                <Button
-                    android:id="@+id/next_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_sans_light"
-                    android:background="@drawable/button"
-                    android:layout_weight="2"
-                    android:text="@string/next"
-                    android:textColor="@color/customwhite" />
+
+                 <Button
+                     android:id="@+id/next_button"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="2"
+                     android:background="@drawable/button"
+                     android:fontFamily="nunito_sans_light"
+                     android:text="@string/next"
+                     android:textColor="@color/customwhite" />
              </LinearLayout>
 
         </LinearLayout>

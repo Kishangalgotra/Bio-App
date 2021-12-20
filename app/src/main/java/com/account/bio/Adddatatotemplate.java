@@ -134,7 +134,7 @@ public class Adddatatotemplate extends Fragment {
     }
     private void fill_data(ArrayList<String> arrayList){
         //String name = arrayList.get(0) + arrayList.get(1);
-        name_.setText(arrayList.get(1));
+        name_.setText(arrayList.get(0));
         religion_.setText(arrayList.get(1));
         language_.setText(arrayList.get(2));
         birthdate_.setText(arrayList.get(3));

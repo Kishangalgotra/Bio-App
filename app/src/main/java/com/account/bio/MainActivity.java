@@ -23,6 +23,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.poifs.filesystem.DocumentEntry;
 import org.apache.poi.poifs.filesystem.DocumentOutputStream;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -67,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
        // DownloadDocFiles();
         //Common.copyFile(getApplicationContext());
         copyFile();
+        try {
+            Common.docToPDF(getApplicationContext());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidFormatException e) {
+            e.printStackTrace();
+        }
         //Toast.makeText(MainActivity.this, "Started", Toast.LENGTH_SHORT).show();
        /* InputStream XmlFileInputStream = getResources().openRawResource(R.raw.docfile); // getting XML
         //getResources().
@@ -84,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         File file = new File(dir,"Locked CV.docx");
         if (!file.exists()) {
             dir.mkdirs();
-            //copyFile(context);
         }
          Toast.makeText(MainActivity.this, "1", Toast.LENGTH_SHORT).show();
         AssetManager assetManager = getApplicationContext().getAssets();
